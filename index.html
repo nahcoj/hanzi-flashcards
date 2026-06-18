@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hanzi Flashcards</title>
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#e94560">
+  <meta name="theme-color" content="#f2f2f2">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="漢字">
@@ -15,8 +15,8 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #1a1a2e;
-      color: #e0e0e0;
+      background: #f2f2f2;
+      color: #1a1a1a;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -25,12 +25,12 @@
 
     header {
       width: 100%;
-      background: #16213e;
+      background: #ffffff;
       padding: 16px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #0f3460;
+      border-bottom: 1px solid #ddd;
     }
 
     header h1 {
@@ -42,7 +42,7 @@
 
     .header-info {
       font-size: 0.85rem;
-      color: #888;
+      color: #595959;
     }
 
     .controls {
@@ -57,31 +57,31 @@
 
     .controls label {
       font-size: 0.85rem;
-      color: #aaa;
+      color: #555;
     }
 
     select, button {
       padding: 8px 16px;
       border-radius: 8px;
-      border: 1px solid #0f3460;
-      background: #16213e;
-      color: #e0e0e0;
+      border: 1px solid #ccc;
+      background: #ffffff;
+      color: #1a1a1a;
       font-size: 0.9rem;
       cursor: pointer;
     }
 
-    select:focus, button:focus { outline: 2px solid #e94560; }
+    select:focus, button:focus { outline: 2px solid #b5173a; }
 
     .btn-primary {
-      background: #e94560;
-      border-color: #e94560;
+      background: #2e7d46;
+      border-color: #2e7d46;
       color: #fff;
       font-weight: 600;
     }
 
-    .btn-primary:hover { background: #c73652; }
+    .btn-primary:hover { background: #1f5c32; }
 
-    .btn-secondary:hover { background: #0f3460; }
+    .btn-secondary:hover { background: #e8e8e8; }
 
     .progress-bar-wrap {
       width: 100%;
@@ -93,14 +93,14 @@
       display: flex;
       justify-content: space-between;
       font-size: 0.8rem;
-      color: #888;
+      color: #595959;
       margin-bottom: 6px;
     }
 
     .progress-bar {
       width: 100%;
       height: 6px;
-      background: #16213e;
+      background: #ddd;
       border-radius: 3px;
       overflow: hidden;
     }
@@ -120,6 +120,14 @@
       justify-content: center;
       padding: 24px 16px;
       width: 100%;
+    }
+
+    #cardContainer {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .scene {
@@ -155,28 +163,27 @@
     }
 
     .card-front {
-      background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
-      border: 1px solid #1a4080;
+      background: #1a1a1a;
+      border: 1px solid #333;
     }
 
     .card-back {
-      background: linear-gradient(135deg, #1a0a20 0%, #3d0a30 100%);
-      border: 1px solid #6d1a50;
+      background: #ffffff;
+      border: 1px solid #ddd;
       transform: rotateY(180deg);
     }
 
     .hanzi-char {
       font-size: 9rem;
       line-height: 1;
-      color: #fff;
-      text-shadow: 0 4px 20px rgba(233,69,96,0.5);
+      color: #ffffff;
       user-select: none;
     }
 
     .card-hint {
       margin-top: 16px;
       font-size: 0.75rem;
-      color: #555;
+      color: #a8b8d0;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
@@ -186,33 +193,33 @@
       top: 16px;
       left: 20px;
       font-size: 0.7rem;
-      color: #444;
+      color: #a8b8d0;
     }
 
     .card-back .meaning {
       font-size: 1.8rem;
       font-weight: 700;
-      color: #fff;
+      color: #1a1a1a;
       text-align: center;
       margin-bottom: 20px;
     }
 
     .card-back .pinyin {
       font-size: 1.2rem;
-      color: #e94560;
+      color: #b5173a;
       margin-bottom: 8px;
       letter-spacing: 1px;
     }
 
     .card-back .jyutping {
       font-size: 1.1rem;
-      color: #c892d8;
+      color: #6b3fa0;
       margin-bottom: 8px;
     }
 
     .card-back .label {
       font-size: 0.65rem;
-      color: #666;
+      color: #595959;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 2px;
@@ -224,52 +231,37 @@
       align-items: center;
     }
 
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: #444;
-      margin: 12px 0;
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .nav-btn {
-      width: 52px;
-      height: 52px;
+    .speak-btn {
+      background: none;
+      border: 1px solid #595959;
       border-radius: 50%;
-      border: 1px solid #0f3460;
-      background: #16213e;
-      color: #e0e0e0;
-      font-size: 1.4rem;
+      width: 28px;
+      height: 28px;
+      font-size: 0.85rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s, transform 0.1s;
+      color: #595959;
+      padding: 0;
+      transition: border-color 0.2s, color 0.2s;
+      flex-shrink: 0;
     }
 
-    .nav-btn:hover { background: #0f3460; transform: scale(1.08); }
-    .nav-btn:active { transform: scale(0.95); }
+    .speak-btn:hover { border-color: #b5173a; color: #b5173a; }
 
-    .flip-btn {
-      padding: 12px 36px;
-      border-radius: 30px;
-      background: #e94560;
-      border: none;
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      letter-spacing: 0.5px;
-      transition: background 0.2s, transform 0.1s;
+    .pronunciation-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .flip-btn:hover { background: #c73652; transform: scale(1.04); }
-    .flip-btn:active { transform: scale(0.97); }
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: #ddd;
+      margin: 12px 0;
+    }
 
     .rating-row {
       display: flex;
@@ -290,10 +282,9 @@
     .rating-btn:hover { opacity: 0.85; transform: scale(1.05); }
     .rating-btn:active { transform: scale(0.95); }
 
-    .btn-again { background: #e94560; color: #fff; }
-    .btn-hard  { background: #e8773a; color: #fff; }
-    .btn-good  { background: #4a9e5c; color: #fff; }
-    .btn-easy  { background: #3a7fe8; color: #fff; }
+    .btn-again { background: #b5173a; color: #fff; }
+    .btn-reps  { background: #1a6b8a; color: #fff; }
+    .btn-good  { background: #2e7d46; color: #fff; }
 
     .stats-row {
       display: flex;
@@ -302,8 +293,11 @@
     }
 
     .stat { text-align: center; }
-    .stat-num { font-size: 1.3rem; font-weight: 700; color: #e94560; }
-    .stat-label { font-size: 0.7rem; color: #666; text-transform: uppercase; }
+    .stat-num { font-size: 1.3rem; font-weight: 700; color: #1a1a1a; }
+    .stat-num.known    { color: #2e7d46; }
+    .stat-num.learning { color: #b5173a; }
+    .stat-num.new-cards { color: #1a1a1a; }
+    .stat-label { font-size: 0.7rem; color: #595959; text-transform: uppercase; }
 
     .search-wrap {
       width: 100%;
@@ -316,37 +310,22 @@
       width: 100%;
       padding: 10px 16px;
       border-radius: 10px;
-      border: 1px solid #0f3460;
-      background: #16213e;
-      color: #e0e0e0;
+      border: 1px solid #ccc;
+      background: #ffffff;
+      color: #1a1a1a;
       font-size: 0.95rem;
     }
 
     .search-input:focus { outline: 2px solid #e94560; }
-    .search-input::placeholder { color: #444; }
+    .search-input::placeholder { color: #767676; }
 
     #no-card {
       text-align: center;
-      color: #555;
+      color: #595959;
       font-size: 1.1rem;
       padding: 60px;
     }
 
-    .keyboard-hint {
-      font-size: 0.72rem;
-      color: #444;
-      margin-top: 12px;
-      text-align: center;
-    }
-
-    kbd {
-      background: #16213e;
-      border: 1px solid #333;
-      border-radius: 4px;
-      padding: 1px 6px;
-      font-family: monospace;
-      font-size: 0.7rem;
-    }
   </style>
 </head>
 <body>
@@ -358,9 +337,9 @@
   <div class="controls">
     <label>Mode:</label>
     <select id="modeSelect">
+      <option value="due">Due for Review (SRS)</option>
       <option value="sequential">Sequential</option>
       <option value="random">Random</option>
-      <option value="due">Due for Review (SRS)</option>
     </select>
     <label>Range:</label>
     <select id="rangeSelect">
@@ -386,9 +365,9 @@
     <div class="progress-meta">
       <span id="progressText">Card 0 / 0</span>
       <div class="stats-row">
-        <div class="stat"><div class="stat-num" id="statKnown">0</div><div class="stat-label">Known</div></div>
-        <div class="stat"><div class="stat-num" id="statLearning">0</div><div class="stat-label">Learning</div></div>
-        <div class="stat"><div class="stat-num" id="statNew">0</div><div class="stat-label">New</div></div>
+        <div class="stat"><div class="stat-num known" id="statKnown">0</div><div class="stat-label">Known</div></div>
+        <div class="stat"><div class="stat-num learning" id="statLearning">0</div><div class="stat-label">Learning</div></div>
+        <div class="stat"><div class="stat-num new-cards" id="statNew">0</div><div class="stat-label">New</div></div>
       </div>
     </div>
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -397,10 +376,6 @@
   <div class="card-area">
     <div id="cardContainer">
       <div id="no-card">Press <strong>Start</strong> to begin your session.</div>
-    </div>
-    <div class="keyboard-hint" id="keyHint" style="display:none">
-      <kbd>Space</kbd> flip &nbsp; <kbd>←</kbd> prev &nbsp; <kbd>→</kbd> next &nbsp;
-      <kbd>1</kbd> Again &nbsp; <kbd>2</kbd> Hard &nbsp; <kbd>3</kbd> Good &nbsp; <kbd>4</kbd> Easy
     </div>
   </div>
 
@@ -498,7 +473,6 @@
     function renderCard() {
       if (deck.length === 0) {
         document.getElementById('cardContainer').innerHTML = '<div id="no-card">No cards to show.</div>';
-        document.getElementById('keyHint').style.display = 'none';
         updateProgress(0, 0);
         return;
       }
@@ -513,39 +487,38 @@
             <div class="card-face card-front">
               <span class="card-id">#${ch.id}</span>
               <div class="hanzi-char">${ch.hanzi}</div>
-              <div class="card-hint">tap or press space to reveal</div>
+              <div class="card-hint">tap to reveal</div>
             </div>
             <div class="card-face card-back">
               <span class="card-id">#${ch.id}</span>
               <div class="meaning">${ch.meaning}</div>
               <div class="back-row">
                 <div class="label">Mandarin Pinyin</div>
-                <div class="pinyin">${ch.pinyin}</div>
+                <div class="pronunciation-row">
+                  <div class="pinyin">${ch.pinyin}</div>
+                  <button class="speak-btn" onclick="event.stopPropagation(); speak('${ch.hanzi}', 'zh-CN')" title="Listen (Mandarin)">🔊</button>
+                </div>
               </div>
               <div class="divider"></div>
               <div class="back-row">
                 <div class="label">Cantonese Jyutping</div>
-                <div class="jyutping">${ch.jyutping}</div>
+                <div class="pronunciation-row">
+                  <div class="jyutping">${ch.jyutping}</div>
+                  <button class="speak-btn" onclick="event.stopPropagation(); speak('${ch.hanzi}', 'zh-HK')" title="Listen (Cantonese)">🔊</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div style="display:flex;gap:16px;margin-top:20px;align-items:center;flex-direction:column;">
-          <div style="display:flex;gap:16px;">
-            <button class="nav-btn" onclick="prevCard()" title="Previous">&#8592;</button>
-            <button class="flip-btn" onclick="flipCard()">Flip</button>
-            <button class="nav-btn" onclick="nextCard()" title="Next">&#8594;</button>
-          </div>
           <div class="rating-row" id="ratingRow" style="display:none">
-            <button class="rating-btn btn-again" onclick="rate('again')">Again</button>
-            <button class="rating-btn btn-hard"  onclick="rate('hard')">Hard</button>
-            <button class="rating-btn btn-good"  onclick="rate('good')">Good</button>
-            <button class="rating-btn btn-easy"  onclick="rate('easy')">Easy</button>
+            <button class="rating-btn btn-again" onclick="rate('again')">Don't Know</button>
+            <button class="rating-btn btn-reps"  onclick="rate('good')">Reps</button>
+            <button class="rating-btn btn-good"  onclick="rate('easy')">Known</button>
           </div>
         </div>
       `;
 
-      document.getElementById('keyHint').style.display = 'block';
       updateProgress(cursor + 1, deck.length);
       updateStats();
     }
@@ -637,6 +610,16 @@
         case '4': if (isFlipped) rate('easy'); break;
       }
     });
+
+    // ── Speech ────────────────────────────────────────────────────────────────
+    function speak(text, lang) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = lang;
+      u.rate = 0.8;
+      window.speechSynthesis.speak(u);
+    }
 
     // ── Init ───────────────────────────────────────────────────────────────────
     updateStats();
